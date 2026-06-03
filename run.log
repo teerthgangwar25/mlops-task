@@ -1,0 +1,16 @@
+2026-06-03 17:03:28 [INFO] ============================================================
+2026-06-03 17:03:28 [INFO] Job started
+2026-06-03 17:03:28 [INFO] Input:    data.csv
+2026-06-03 17:03:28 [INFO] Config:   config.yaml
+2026-06-03 17:03:28 [INFO] Output:   metrics.json
+2026-06-03 17:03:28 [INFO] Log file: run.log
+2026-06-03 17:03:28 [INFO] ============================================================
+2026-06-03 17:03:28 [INFO] Config loaded — seed=42, window=5, version=v1
+2026-06-03 17:03:28 [INFO] Data loaded — 10000 rows, columns: ['timestamp', 'open', 'high', 'low', 'close', 'volume_btc', 'volume_usd']
+2026-06-03 17:03:28 [INFO] Seed set: 42
+2026-06-03 17:03:28 [INFO] Rolling mean computed — window=5, NaN rows=4 (excluded)
+2026-06-03 17:03:28 [INFO] Signals generated — valid rows=9996
+2026-06-03 17:03:28 [INFO] Metrics written to: metrics.json
+2026-06-03 17:03:28 [INFO] Metrics summary — rows=9996, signal_rate=0.4991, latency=26ms
+2026-06-03 17:03:28 [INFO] Job completed — status=success
+2026-06-03 17:03:28 [INFO] ============================================================
