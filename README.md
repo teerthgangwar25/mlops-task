@@ -1,13 +1,14 @@
 # MLOps Batch Job — Rolling Mean Signal Pipeline
 
-A minimal MLOps-style batch job demonstrating reproducibility, observability, and deployment readiness.
+A minimal MLOps-style batch job demonstrating reproducibility, observability, and deployment readiness.  
+Built for the Primetrade.ai ML/MLOps Engineering Internship — Task 0.
 
 ---
 
 ## What it does
 
 1. Loads configuration from `config.yaml`
-2. Reads an OHLCV CSV dataset
+2. Reads a 10,000-row OHLCV CSV dataset
 3. Computes a rolling mean on the `close` column
 4. Generates a binary signal: `1` if `close > rolling_mean`, else `0`
 5. Writes structured metrics JSON and detailed logs
@@ -41,11 +42,7 @@ pip install -r requirements.txt
 **2. Run the pipeline**
 
 ```bash
-python run.py \
-  --input    data.csv \
-  --config   config.yaml \
-  --output   metrics.json \
-  --log-file run.log
+python run.py --input data.csv --config config.yaml --output metrics.json --log-file run.log
 ```
 
 **3. Check outputs**
@@ -124,7 +121,7 @@ On error:
 
 ## Design notes
 
-- **Determinism**: `numpy.random.seed(seed)` is set before any computation. Same config always produces the same output.
+- **Determinism**: `numpy.random.seed(seed)` is set before any computation. Same config always produces identical output.
 - **NaN handling**: The first `window - 1` rows produce a NaN rolling mean and are excluded from signal computation. `rows_processed` reflects only valid rows.
 - **Error handling**: All failures (missing file, bad CSV, missing column, invalid config) write an error `metrics.json` and exit with code `1`.
-- **No hardcoded paths**: all paths come from CLI flags only.
+- **No hardcoded paths**: all paths come exclusively from CLI flags.
